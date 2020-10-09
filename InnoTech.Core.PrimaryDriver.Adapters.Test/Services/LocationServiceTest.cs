@@ -12,8 +12,22 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Services
         public void CreateNewLocationServiceOfTypeILocationService_WithNullAsILocationRepository_ThrowsNullReferenceException()
         {
             ILocationRepository locationRepository = null;
-            ILocationService locationService = new LocationService(locationRepository);
-            Assert.Throws<NullReferenceException>(() => true);
+            Assert.Throws<NullReferenceException>(() => new LocationService(locationRepository));
+        }
+        
+        [Fact]
+        public void CreateNewLocationServiceOfTypeILocationService_WithNullAsILocationRepository_ThrowsNullReferenceExceptionWithCorrectText()
+        {
+            ILocationRepository locationRepository = null;
+            try
+            {
+                new LocationService(locationRepository);
+                Assert.True(false, "This should not happen you should throw exception");
+            }
+            catch (NullReferenceException e)
+            {
+                Assert.Equal("You need to have a Repository to use the Service", e.Message);
+            }
         }
     }
 }
