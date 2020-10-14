@@ -19,7 +19,7 @@ namespace InnoTech.Core.PrimaryDriverAdapters.Services
         {
             if (location == null)
             {
-                throw new NullReferenceException("Location Cannot Be Null");
+                throw new ParameterCannotBeNullException("Location");
             }
         }
     }
