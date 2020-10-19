@@ -15,7 +15,7 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Exceptions
             Action action = () => throw new PropertyCannotBeEmptyException();
             action.Should()
                 .Throw<PropertyCannotBeEmptyException>()
-                .And.ParamName.Should().Be("Unknown needs to be a value");
+                .WithMessage("Unknown needs to be a value");
         }
         
         [Fact]
@@ -24,7 +24,7 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Exceptions
             Action action = () => throw new PropertyCannotBeEmptyException("Name");
             action.Should()
                 .Throw<PropertyCannotBeEmptyException>()
-                .And.ParamName.Should().Be("Name needs to be a value");
+                .WithMessage("Name needs to be a value");
         }
     }
 }

@@ -20,7 +20,7 @@ namespace InnoTech.Core.PrimaryDriverAdapters.Validators
 
             if (location.Name.Length < 2)
             {
-                throw new ArgumentOutOfRangeException("Name Must be 2 or more Characters");
+                throw new ArgumentOutOfRangeException(null, "Name Must be 2 or more Characters");
             }
         }
     }

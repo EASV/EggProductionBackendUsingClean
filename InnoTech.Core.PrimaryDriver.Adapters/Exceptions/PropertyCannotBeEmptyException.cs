@@ -6,7 +6,7 @@ namespace InnoTech.Core.PrimaryDriverAdapters.Exceptions
     public class PropertyCannotBeEmptyException: ArgumentOutOfRangeException
     {
         public PropertyCannotBeEmptyException(string propertyName = "Unknown"): 
-            base($"{propertyName} needs to be a value") {
+            base(null, $"{propertyName} needs to be a value") {
         }
     }
 }
