@@ -1,5 +1,6 @@
 using System;
 using FluentAssertions;
+using InnoTech.Core.Entity;
 using InnoTech.Core.InfratructurePorts.Repositories;
 using InnoTech.Core.PrimaryDriverAdapters.Exceptions;
 using InnoTech.Core.PrimaryDriverAdapters.Services;
@@ -34,8 +35,17 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Services
         }
 
         [Fact]
-        public void Create_WithLocationParameter_ShouldCallLocationValidatorsDefaultValidationMethodOneTime()
+        public void Create_WithLocationParameter_ShouldCallILocationValidatorsDefaultValidationMethodOneTime()
         {
+            Mock<ILocationRepository> locationRepositoryMock = new Mock<ILocationRepository>();
+            Mock<ILocationValidator> locationValidatorMock = new Mock<ILocationValidator>();
+            LocationService locationService = new LocationService(locationRepositoryMock.Object, locationValidatorMock.Object);
+            Location location = new Location
+            {
+                Name = "The Village"
+            };
+            locationService.Create(location);
+            locationValidatorMock.Verify(lm => lm.DefaultValidation(location), Times.Once);
         }
     }
 }

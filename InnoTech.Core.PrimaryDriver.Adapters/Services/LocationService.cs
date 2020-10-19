@@ -10,6 +10,8 @@ namespace InnoTech.Core.PrimaryDriverAdapters.Services
 {
     public class LocationService: ILocationService
     {
+        private ILocationValidator _locationValidator;
+
         public LocationService(ILocationRepository locationRepository, ILocationValidator locationValidator)
         {
             if(locationRepository == null) {
@@ -18,26 +20,13 @@ namespace InnoTech.Core.PrimaryDriverAdapters.Services
             if(locationValidator == null) {
                 throw new ParameterCannotBeNullException("LocationValidator");
             }
+
+            _locationValidator = locationValidator;
         }
 
         public void Create(Location location)
         {
-            //locationValidator.DefaultValidation(location)
-            
-            /*if (location == null)
-            {
-                throw new ParameterCannotBeNullException("Location");
-            }
-
-            if (string.IsNullOrEmpty(location.Name))
-            {
-                throw new PropertyCannotBeEmptyException("Name");
-            }
-
-            if (location.Name.Length < 2)
-            {
-                throw new ArgumentOutOfRangeException("Name Must be 2 or more Characters");
-            }*/
+            _locationValidator.DefaultValidation(location);
         }
     }
 }
