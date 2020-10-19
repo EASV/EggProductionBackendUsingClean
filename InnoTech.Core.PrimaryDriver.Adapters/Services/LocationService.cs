@@ -26,6 +26,11 @@ namespace InnoTech.Core.PrimaryDriverAdapters.Services
             {
                 throw new PropertyCannotBeEmptyException("Name");
             }
+
+            if (location.Name.Length < 2)
+            {
+                throw new ArgumentOutOfRangeException("Name Must be 2 or more Characters");
+            }
         }
     }
 }

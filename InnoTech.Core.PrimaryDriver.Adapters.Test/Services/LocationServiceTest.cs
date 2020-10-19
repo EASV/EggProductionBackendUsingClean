@@ -50,5 +50,19 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Services
 
         }
         
+        [Fact]
+        public void CreateALocation_WithNameLessThen2Characters_ThrowsArgumentOutOfRangeException()
+        {
+            var location = new Location();
+            location.Name = "A";
+            ILocationRepository locationRepository = new Mock<ILocationRepository>().Object;
+            ILocationService locationService = new LocationService(locationRepository);
+            Action action = () => locationService.Create(location as Location);
+            action.Should()
+                .Throw<ArgumentOutOfRangeException>()
+                .And.ParamName.Should().Be("Name Must be 2 or more Characters");
+
+        }
+        
     }
 }
