@@ -17,7 +17,7 @@ namespace InnoTech.Core.PrimaryDriverAdapters.Services
 
         public void Create(Location location)
         {
-            if (location == null)
+            /*if (location == null)
             {
                 throw new ParameterCannotBeNullException("Location");
             }
@@ -30,7 +30,7 @@ namespace InnoTech.Core.PrimaryDriverAdapters.Services
             if (location.Name.Length < 2)
             {
                 throw new ArgumentOutOfRangeException("Name Must be 2 or more Characters");
-            }
+            }*/
         }
     }
 }
