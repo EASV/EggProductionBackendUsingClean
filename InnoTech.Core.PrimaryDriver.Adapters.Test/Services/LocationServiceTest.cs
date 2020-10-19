@@ -1,11 +1,10 @@
 using System;
 using FluentAssertions;
-using InnoTech.Core.Entity;
 using InnoTech.Core.InfratructurePorts.Repositories;
 using InnoTech.Core.PrimaryDriverAdapters.Exceptions;
 using InnoTech.Core.PrimaryDriverAdapters.Services;
 using InnoTech.Core.PrimaryDriverAdapters.Validators;
-using InnoTech.Core.PrimaryDriverPorts.Services;
+using InnoTech.Core.PrimaryDriverPorts.Validators;
 using Moq;
 using Xunit;
 
@@ -21,19 +20,22 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Services
             action.Should()
                 .Throw<ParameterCannotBeNullException>()
                 .WithMessage("LocationRepository Parameter Cannot be null");
-
         }
-
         
         [Fact]
-        public void CreateNewLocationServiceOfTypeILocationService_WithNullAsLocationValidator_ThrowsNullReferenceException()
+        public void CreateNewLocationServiceOfTypeILocationService_WithNullAsILocationValidator_ThrowsNullReferenceException()
         {
             ILocationRepository locationRepository = new Mock<ILocationRepository>().Object;
-            Action action = () => new LocationService(locationRepository, null as LocationValidator);
+            ILocationValidator validator = null as LocationValidator;
+            Action action = () => new LocationService(locationRepository, validator);
             action.Should()
                 .Throw<ParameterCannotBeNullException>()
                 .WithMessage("LocationValidator Parameter Cannot be null");
         }
-        
+
+        [Fact]
+        public void Create_WithLocationParameter_ShouldCallLocationValidatorsDefaultValidationMethodOneTime()
+        {
+        }
     }
 }

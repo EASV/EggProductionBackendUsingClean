@@ -1,10 +1,11 @@
 using System;
 using InnoTech.Core.Entity;
 using InnoTech.Core.PrimaryDriverAdapters.Exceptions;
+using InnoTech.Core.PrimaryDriverPorts.Validators;
 
 namespace InnoTech.Core.PrimaryDriverAdapters.Validators
 {
-    public class LocationValidator
+    public class LocationValidator: ILocationValidator
     {
         public void DefaultValidation(Location location)
         {
