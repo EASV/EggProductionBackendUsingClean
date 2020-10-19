@@ -35,7 +35,20 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Services
             /*var exception = Assert.Throws<NullReferenceException>(() => locationService.Create(null as Location));
             Assert.Equal("Location Cannot Be Null", exception.Message);*/
         }
-        
+
+        [Fact]
+        public void CreateALocation_WithEmptyName_ThrowsPropertyCannotBeEmptyException()
+        {
+            var location = new Location();
+            location.Name = "";
+            ILocationRepository locationRepository = new Mock<ILocationRepository>().Object;
+            ILocationService locationService = new LocationService(locationRepository);
+            Action action = () => locationService.Create(location as Location);
+            action.Should()
+                .Throw<PropertyCannotBeEmptyException>()
+                .And.ParamName.Should().Be("Name needs to be a value");
+
+        }
         
     }
 }

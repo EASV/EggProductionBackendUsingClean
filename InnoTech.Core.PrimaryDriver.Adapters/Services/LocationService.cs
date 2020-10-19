@@ -21,6 +21,11 @@ namespace InnoTech.Core.PrimaryDriverAdapters.Services
             {
                 throw new ParameterCannotBeNullException("Location");
             }
+
+            if (string.IsNullOrEmpty(location.Name))
+            {
+                throw new PropertyCannotBeEmptyException("Name");
+            }
         }
     }
 }
