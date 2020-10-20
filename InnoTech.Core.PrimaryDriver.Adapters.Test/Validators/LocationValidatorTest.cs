@@ -30,17 +30,14 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Validators
         {
              _locationValidatorTestHelper
                  .DefaultValidation<PropertyCannotBeEmptyException>(
-                     _locationTestHelper.Location(), 
-                     "Name needs to be a value");
+                     _locationTestHelper.Location(), "Name needs to be a value");
         }
         
         [Fact]
         public void DefaultValidation_WithLocationNameLessThen2Characters_ThrowsArgumentOutOfRangeException()
         {
-            _locationValidatorTestHelper
-                .DefaultValidation<ArgumentOutOfRangeException>(
-                    _locationTestHelper.Location("A"),
-                    "Name Must be 2 or more Characters");
+            _locationValidatorTestHelper.DefaultValidation<ArgumentOutOfRangeException>(
+                    _locationTestHelper.Location("A"),"Name Must be 2 or more Characters");
         }
     }
 }
