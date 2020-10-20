@@ -1,7 +1,6 @@
 using System;
 using FluentAssertions;
 using InnoTech.Core.Entity;
-using InnoTech.Core.PrimaryDriverAdapters.Exceptions;
 using InnoTech.Core.PrimaryDriverAdapters.Validators;
 using InnoTech.Core.PrimaryDriverPorts.Validators;
 
@@ -24,7 +23,7 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Helpers
             
         }
 
-        public ILocationValidator LocationValidator()
+        private ILocationValidator LocationValidator()
         {
             return new LocationValidator();
         }

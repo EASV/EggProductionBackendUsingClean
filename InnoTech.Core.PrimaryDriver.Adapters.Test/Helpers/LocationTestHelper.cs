@@ -12,7 +12,7 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Helpers
             };
         }
 
-        public Location GetValidLocation()
+        public Location ValidLocation()
         {
             return new Location
             {
