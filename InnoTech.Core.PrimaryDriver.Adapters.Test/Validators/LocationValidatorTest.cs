@@ -32,13 +32,15 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Validators
 
         #region Id
 
-        [Fact]
-        public void DefaultValidation_WithLocationWithNegativeId_ThrowsArgumentOutOfRangeException()
+        [Theory]
+        [InlineData(-1)]
+        [InlineData(-5000)]
+        [InlineData(int.MinValue)]
+        public void DefaultValidation_WithLocationWithNegativeId_ThrowsArgumentOutOfRangeException(int id)
         {
             _locationValidatorTestHelper
                 .DefaultValidation<ArgumentOutOfRangeException>(
-                    _locationTestHelper.LocationWithoutId(-1), "ID needs to 0 or more");
-
+                    _locationTestHelper.LocationWithoutId(id), "ID needs to 0 or more");
         }
 
         #endregion
@@ -136,5 +138,6 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Validators
         }
 
         #endregion
+
     }
 }

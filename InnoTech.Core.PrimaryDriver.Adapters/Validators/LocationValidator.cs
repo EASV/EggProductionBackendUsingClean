@@ -57,6 +57,11 @@ namespace InnoTech.Core.PrimaryDriverAdapters.Validators
             {
                 throw new ArgumentOutOfRangeException(null, "Owner Must less then 20 Characters");
             }
+
+            if (location.Id < 0)
+            {
+                throw new ArgumentOutOfRangeException(null, "ID needs to 0 or more" );
+            }
         }
     }
 }
