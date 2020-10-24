@@ -5,4 +5,8 @@
         <RootNamespace>InnoTech.Core.InfratructurePorts</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\InnoTech.Core.Entity\InnoTech.Core.Entity.csproj" />
+    </ItemGroup>
+
 </Project>
