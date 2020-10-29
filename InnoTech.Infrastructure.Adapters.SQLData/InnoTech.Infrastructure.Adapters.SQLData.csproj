@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <RootNamespace>InnoTech.Infrastructure.SQLData</RootNamespace>
     </PropertyGroup>
 
 </Project>

@@ -43,7 +43,7 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Helpers
             locationRepository ??= new Mock<ILocationRepository>().Object;
             validator ??= new Mock<ILocationValidator>().Object;
             
-            var service = new LocationService(locationRepository, validator);
+            var service = new LocationService(locationRepository, validator) as ILocationService;
             var location = _locationTestHelper.ValidLocation();
             service.Create(location);
             return location;
