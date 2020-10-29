@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\InnoTech.Core.Infratructure.Ports\InnoTech.Core.Infratructure.Ports.csproj" />
       <ProjectReference Include="..\InnoTech.Infrastructure.Adapters.SQLData\InnoTech.Infrastructure.Adapters.SQLData.csproj" />
     </ItemGroup>
 
