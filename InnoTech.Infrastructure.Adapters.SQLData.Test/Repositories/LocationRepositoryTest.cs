@@ -18,7 +18,15 @@ namespace InnoTech.Infrastructure.Adapters.SQLData.Test.Repositories
         }
         
         [Fact]
-        public void AddInLocationRepositoryAsILocationRepository_WithANullLocation_ThrowsException()
+        public void LocationRepository_ShouldImplementILocationRepository()
+        {
+            var context = new Mock<EggProductionDbContext>().Object;
+            var repo = new LocationRepository(context);
+            repo.Should().BeAssignableTo<ILocationRepository>();
+        }
+        
+        [Fact]
+        public void AddInLocationRepository_WithANullLocation_ThrowsException()
         {
             var context = new Mock<EggProductionDbContext>().Object;
             var repo = new LocationRepository(context) as ILocationRepository;
@@ -29,7 +37,11 @@ namespace InnoTech.Infrastructure.Adapters.SQLData.Test.Repositories
         [Fact]
         public void Add_WithValidLocation_CallsAddOnDBContext()
         {
-            
+            var contextMock = new Mock<EggProductionDbContext>();
+            var repo = new LocationRepository(contextMock.Object);
+            var location = new Location{Id = 0, Address = "The Street", Name = "The Hut", Owner = "John Doe"};
+            repo.Add(location);
+            contextMock.Verify(c => c.Add(location), Times.Once);
         }
         
         

@@ -6,12 +6,15 @@ namespace InnoTech.Infrastructure.Adapters.SQLData.Repositories
 {
     public class LocationRepository: ILocationRepository
     {
+        private readonly EggProductionDbContext _ctx;
+
         public LocationRepository(EggProductionDbContext ctx)
         {
             if (ctx == null)
             {
                 throw new NullReferenceException();
             }
+            _ctx = ctx;
         }
 
         public void Add(Location location)
@@ -20,6 +23,8 @@ namespace InnoTech.Infrastructure.Adapters.SQLData.Repositories
             {
                 throw new NullReferenceException();
             }
+
+            _ctx.Add(location);
         }
     }
 }
