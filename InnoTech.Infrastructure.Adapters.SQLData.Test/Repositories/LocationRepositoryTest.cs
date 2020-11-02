@@ -3,7 +3,6 @@ using FluentAssertions;
 using InnoTech.Core.Entity;
 using InnoTech.Core.InfratructurePorts.Repositories;
 using InnoTech.Infrastructure.Adapters.SQLData.Repositories;
-using Microsoft.EntityFrameworkCore;
 using Moq;
 using Xunit;
 

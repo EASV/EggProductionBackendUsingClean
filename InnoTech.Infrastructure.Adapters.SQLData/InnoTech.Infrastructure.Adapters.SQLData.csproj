@@ -8,4 +8,8 @@
       <ProjectReference Include="..\InnoTech.Core.Infratructure.Ports\InnoTech.Core.Infratructure.Ports.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+    </ItemGroup>
+
 </Project>
