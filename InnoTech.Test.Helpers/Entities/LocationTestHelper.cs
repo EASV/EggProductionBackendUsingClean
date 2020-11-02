@@ -1,6 +1,6 @@
 using InnoTech.Core.Entity;
 
-namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Helpers
+namespace InnoTech.Test.Helpers.Entities
 {
     public class LocationTestHelper
     {

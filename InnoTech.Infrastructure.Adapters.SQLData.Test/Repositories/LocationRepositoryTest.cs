@@ -3,6 +3,7 @@ using FluentAssertions;
 using InnoTech.Core.Entity;
 using InnoTech.Core.InfratructurePorts.Repositories;
 using InnoTech.Infrastructure.Adapters.SQLData.Repositories;
+using InnoTech.Test.Helpers.Entities;
 using Moq;
 using Xunit;
 
@@ -10,6 +11,12 @@ namespace InnoTech.Infrastructure.Adapters.SQLData.Test.Repositories
 {
     public class LocationRepositoryTest
     {
+        private readonly LocationTestHelper _helper;
+
+        public LocationRepositoryTest()
+        {
+            _helper = new LocationTestHelper();
+        }
         [Fact]
         public void CreateALocationRepository_WithEggProductionDbContextAsNullParam_ThrowsException()
         {
@@ -39,7 +46,7 @@ namespace InnoTech.Infrastructure.Adapters.SQLData.Test.Repositories
         {
             var contextMock = new Mock<EggProductionDbContext>();
             var repo = new LocationRepository(contextMock.Object);
-            var location = new Location{Id = 0, Address = "The Street", Name = "The Hut", Owner = "John Doe"};
+            var location = _helper.ValidLocation();
             repo.Add(location);
             contextMock.Verify(c => c.Add(location), Times.Once);
         }

@@ -1,6 +1,7 @@
 using System;
-using InnoTech.Core.PrimaryDriver.Adapters.Test.Helpers;
 using InnoTech.Core.PrimaryDriverAdapters.Exceptions;
+using InnoTech.Test.Helpers.Entities;
+using InnoTech.Test.Helpers.Validators;
 using Xunit;
 
 namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Validators

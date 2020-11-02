@@ -1,14 +1,14 @@
 using System;
-using System.Collections.Generic;
 using FluentAssertions;
 using InnoTech.Core.Entity;
 using InnoTech.Core.InfratructurePorts.Repositories;
 using InnoTech.Core.PrimaryDriverAdapters.Services;
 using InnoTech.Core.PrimaryDriverPorts.Services;
 using InnoTech.Core.PrimaryDriverPorts.Validators;
+using InnoTech.Test.Helpers.Entities;
 using Moq;
 
-namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Helpers
+namespace InnoTech.Test.Helpers.Services
 {
     public class LocationServiceTestHelper
     {
