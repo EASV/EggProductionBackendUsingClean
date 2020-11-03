@@ -1,7 +1,6 @@
 using System;
 using InnoTech.Core.PrimaryDriverAdapters.Exceptions;
-using InnoTech.Test.Helpers.Entities;
-using InnoTech.Test.Helpers.Validators;
+using InnoTech.Test.Helpers.Locations;
 using Xunit;
 
 namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Validators
@@ -11,12 +10,12 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Validators
         #region Constructor and Properties
 
         private readonly LocationValidatorTestHelper _locationValidatorTestHelper;
-        private readonly LocationTestHelper _locationTestHelper;
+        private readonly LocationEntityTestHelper _locationEntityTestHelper;
 
         public LocationValidatorTest()
         {
             _locationValidatorTestHelper = new LocationValidatorTestHelper();
-            _locationTestHelper = new LocationTestHelper();
+            _locationEntityTestHelper = new LocationEntityTestHelper();
         }
 
         #endregion
@@ -41,7 +40,7 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Validators
         {
             _locationValidatorTestHelper
                 .DefaultValidation<ArgumentOutOfRangeException>(
-                    _locationTestHelper.LocationWithoutId(id), "ID needs to 0 or more");
+                    _locationEntityTestHelper.LocationWithoutId(id), "ID needs to 0 or more");
         }
 
         #endregion
@@ -54,21 +53,21 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Validators
         {
             _locationValidatorTestHelper
                 .DefaultValidation<PropertyCannotBeEmptyException>(
-                    _locationTestHelper.LocationWithoutName(), "Name needs to be a value");
+                    _locationEntityTestHelper.LocationWithoutName(), "Name needs to be a value");
         }
         
         [Fact]
         public void DefaultValidation_WithLocationNameLessThen2Characters_ThrowsArgumentOutOfRangeException()
         {
             _locationValidatorTestHelper.DefaultValidation<ArgumentOutOfRangeException>(
-                _locationTestHelper.LocationWithoutName("A"),"Name Must be 2 or more Characters");
+                _locationEntityTestHelper.LocationWithoutName("A"),"Name Must be 2 or more Characters");
         }
         
         [Fact]
         public void DefaultValidation_WithLocationNameAbove20Characters_ThrowsArgumentOutOfRangeException()
         {
             _locationValidatorTestHelper.DefaultValidation<ArgumentOutOfRangeException>(
-                _locationTestHelper.LocationWithoutName("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"),
+                _locationEntityTestHelper.LocationWithoutName("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"),
                 "Name Must less then 20 Characters");
         }
 
@@ -81,7 +80,7 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Validators
         {
             _locationValidatorTestHelper
                 .DefaultValidation<PropertyCannotBeEmptyException>(
-                    _locationTestHelper.LocationWithoutAddress(), 
+                    _locationEntityTestHelper.LocationWithoutAddress(), 
                     "Address needs to be a value");
         }
 
@@ -89,7 +88,7 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Validators
         public void DefaultValidation_WithLocationAddressLessThen4Characters_ThrowsArgumentOutOfRangeException()
         {
             _locationValidatorTestHelper.DefaultValidation<ArgumentOutOfRangeException>(
-                _locationTestHelper.LocationWithoutAddress("A"),"Address Must be 4 or more Characters");
+                _locationEntityTestHelper.LocationWithoutAddress("A"),"Address Must be 4 or more Characters");
         }
         
         [Fact]
@@ -101,7 +100,7 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Validators
                 charsAbove100 += "A";
             }
             _locationValidatorTestHelper.DefaultValidation<ArgumentOutOfRangeException>(
-                _locationTestHelper.LocationWithoutAddress(charsAbove100),
+                _locationEntityTestHelper.LocationWithoutAddress(charsAbove100),
                 "Address Must less then 100 Characters");
         }
 
@@ -114,7 +113,7 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Validators
         {
             _locationValidatorTestHelper
                 .DefaultValidation<PropertyCannotBeEmptyException>(
-                    _locationTestHelper.LocationWithoutOwner(""), 
+                    _locationEntityTestHelper.LocationWithoutOwner(""), 
                     "Owner needs to be a value");
         }
 
@@ -122,7 +121,7 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Validators
         public void DefaultValidation_WithLocationOwnerLessThen2Characters_ThrowsArgumentOutOfRangeException()
         {
             _locationValidatorTestHelper.DefaultValidation<ArgumentOutOfRangeException>(
-                _locationTestHelper.LocationWithoutOwner("A"),"Owner Must be 2 or more Characters");
+                _locationEntityTestHelper.LocationWithoutOwner("A"),"Owner Must be 2 or more Characters");
         }
         
         [Fact]
@@ -134,7 +133,7 @@ namespace InnoTech.Core.PrimaryDriver.Adapters.Test.Validators
                 charsAbove20 += "A";
             }
             _locationValidatorTestHelper.DefaultValidation<ArgumentOutOfRangeException>(
-                _locationTestHelper.LocationWithoutOwner(charsAbove20),
+                _locationEntityTestHelper.LocationWithoutOwner(charsAbove20),
                 "Owner Must less then 20 Characters");
         }
 

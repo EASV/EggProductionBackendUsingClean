@@ -1,6 +1,6 @@
 using InnoTech.Core.InfratructurePorts.Repositories;
 using InnoTech.Core.PrimaryDriverAdapters.Exceptions;
-using InnoTech.Test.Helpers.Services;
+using InnoTech.Test.Helpers.Locations;
 using Moq;
 using Xunit;
 

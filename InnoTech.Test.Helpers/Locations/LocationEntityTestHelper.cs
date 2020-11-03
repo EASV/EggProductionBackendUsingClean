@@ -1,41 +1,39 @@
-using InnoTech.Core.Entity;
-
-namespace InnoTech.Test.Helpers.Entities
+namespace InnoTech.Test.Helpers.Locations
 {
-    public class LocationTestHelper
+    public class LocationEntityTestHelper
     {
-        public Location LocationWithoutName(string name = "")
+        public Core.Entity.Location LocationWithoutName(string name = "")
         {
-            return new Location
+            return new Core.Entity.Location
             {
                 Name = name
             };
         }
         
-        public Location LocationWithoutAddress(string address = "")
+        public Core.Entity.Location LocationWithoutAddress(string address = "")
         {
             var location = LocationWithoutName("The Village");
             location.Address = address;
             return location;
         }
 
-        public Location LocationWithoutOwner(string owner = "")
+        public Core.Entity.Location LocationWithoutOwner(string owner = "")
         {
             var location = LocationWithoutAddress("The Place");
             location.Owner = owner;
             return location;
         }
 
-        public Location LocationWithoutId(int id = 0)
+        public Core.Entity.Location LocationWithoutId(int id = 0)
         {
             var location = LocationWithoutOwner("John doe");
             location.Id = id;
             return location;
         }
 
-        public Location ValidLocation()
+        public Core.Entity.Location ValidLocation()
         {
-            return new Location
+            return new Core.Entity.Location
             {
                 Name = "The Village",
                 Address = "The Place",

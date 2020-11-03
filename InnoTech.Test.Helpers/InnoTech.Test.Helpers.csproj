@@ -9,10 +9,12 @@
       <ProjectReference Include="..\InnoTech.Core.Infratructure.Ports\InnoTech.Core.Infratructure.Ports.csproj" />
       <ProjectReference Include="..\InnoTech.Core.PrimaryDriver.Adapters\InnoTech.Core.PrimaryDriver.Adapters.csproj" />
       <ProjectReference Include="..\InnoTech.Core.PrimaryDriver.Ports\InnoTech.Core.PrimaryDriver.Ports.csproj" />
+      <ProjectReference Include="..\InnoTech.Infrastructure.Adapters.SQLData\InnoTech.Infrastructure.Adapters.SQLData.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="FluentAssertions" Version="5.10.3" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
       <PackageReference Include="Moq" Version="4.14.7" />
     </ItemGroup>
 

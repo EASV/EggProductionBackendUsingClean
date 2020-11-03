@@ -5,18 +5,17 @@ using InnoTech.Core.InfratructurePorts.Repositories;
 using InnoTech.Core.PrimaryDriverAdapters.Services;
 using InnoTech.Core.PrimaryDriverPorts.Services;
 using InnoTech.Core.PrimaryDriverPorts.Validators;
-using InnoTech.Test.Helpers.Entities;
 using Moq;
 
-namespace InnoTech.Test.Helpers.Services
+namespace InnoTech.Test.Helpers.Locations
 {
     public class LocationServiceTestHelper
     {
-        private LocationTestHelper _locationTestHelper;
+        private LocationEntityTestHelper _locationEntityTestHelper;
 
         public LocationServiceTestHelper()
         {
-            _locationTestHelper = new LocationTestHelper();
+            _locationEntityTestHelper = new LocationEntityTestHelper();
         }
         public void CreateInvalid<T>(
             ILocationRepository repository = null, 
@@ -44,7 +43,7 @@ namespace InnoTech.Test.Helpers.Services
             validator ??= new Mock<ILocationValidator>().Object;
             
             var service = new LocationService(locationRepository, validator) as ILocationService;
-            var location = _locationTestHelper.ValidLocation();
+            var location = _locationEntityTestHelper.ValidLocation();
             service.Create(location);
             return location;
         }
