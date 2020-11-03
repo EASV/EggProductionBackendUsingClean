@@ -24,6 +24,8 @@ namespace InnoTech.Infrastructure.Adapters.SQLData.Repositories
                 throw new NullReferenceException();
             }
 
+            //Your looking for a table with the type location,
+            //find the correct dbset
             _ctx.Add(location);
         }
     }

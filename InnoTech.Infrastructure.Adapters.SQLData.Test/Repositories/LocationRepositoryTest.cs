@@ -2,7 +2,8 @@ using System;
 using FluentAssertions;
 using InnoTech.Core.InfratructurePorts.Repositories;
 using InnoTech.Infrastructure.Adapters.SQLData.Repositories;
-using InnoTech.Test.Helpers.Locations;
+using InnoTech.Test.Helpers.Entities;
+using InnoTech.Test.Helpers.Repositories;
 using Moq;
 using Xunit;
 
@@ -21,15 +22,14 @@ namespace InnoTech.Infrastructure.Adapters.SQLData.Test.Repositories
         [Fact]
         public void CreateALocationRepository_WithEggProductionDbContextAsNullParam_ThrowsException()
         {
-            Action createIt = () => new LocationRepository(null);
+            Action createIt = () => _repoHelper.GetLocationRepository(null);
             createIt.Should().Throw<NullReferenceException>();
         }
         
         [Fact]
         public void LocationRepository_ShouldImplementILocationRepository()
         {
-            var context = new Mock<EggProductionDbContext>().Object;
-            var repo = new LocationRepository(context);
+            var repo = _repoHelper.GetValidLocationRepository();
             repo.Should().BeAssignableTo<ILocationRepository>();
         }
         
@@ -50,7 +50,6 @@ namespace InnoTech.Infrastructure.Adapters.SQLData.Test.Repositories
             repo.Add(location);
             contextMock.Verify(c => c.Add(location), Times.Once);
         }
-        
         
     }
 }

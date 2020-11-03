@@ -1,4 +1,4 @@
-namespace InnoTech.Test.Helpers.Locations
+namespace InnoTech.Test.Helpers.Entities
 {
     public class LocationEntityTestHelper
     {

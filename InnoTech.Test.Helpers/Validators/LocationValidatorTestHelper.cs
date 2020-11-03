@@ -4,7 +4,7 @@ using InnoTech.Core.Entity;
 using InnoTech.Core.PrimaryDriverAdapters.Validators;
 using InnoTech.Core.PrimaryDriverPorts.Validators;
 
-namespace InnoTech.Test.Helpers.Locations
+namespace InnoTech.Test.Helpers.Validators
 {
     public class LocationValidatorTestHelper
     {

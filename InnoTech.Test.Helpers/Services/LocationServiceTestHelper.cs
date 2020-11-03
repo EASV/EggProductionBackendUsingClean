@@ -5,9 +5,10 @@ using InnoTech.Core.InfratructurePorts.Repositories;
 using InnoTech.Core.PrimaryDriverAdapters.Services;
 using InnoTech.Core.PrimaryDriverPorts.Services;
 using InnoTech.Core.PrimaryDriverPorts.Validators;
+using InnoTech.Test.Helpers.Entities;
 using Moq;
 
-namespace InnoTech.Test.Helpers.Locations
+namespace InnoTech.Test.Helpers.Services
 {
     public class LocationServiceTestHelper
     {

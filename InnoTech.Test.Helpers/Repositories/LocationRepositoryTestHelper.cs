@@ -1,17 +1,11 @@
 using InnoTech.Infrastructure.Adapters.SQLData;
 using InnoTech.Infrastructure.Adapters.SQLData.Repositories;
+using InnoTech.Test.Helpers.Entities;
 
-namespace InnoTech.Test.Helpers.Locations
+namespace InnoTech.Test.Helpers.Repositories
 {
     public class LocationRepositoryTestHelper
     {
-        private LocationEntityTestHelper _locationEntityTestHelper;
-
-        public LocationRepositoryTestHelper()
-        {
-            _locationEntityTestHelper = new LocationEntityTestHelper();
-        }
-        
         public LocationRepository GetValidLocationRepository()
         {
             return new LocationRepository(new EggProductionDbContext());
@@ -19,7 +13,7 @@ namespace InnoTech.Test.Helpers.Locations
 
         public LocationRepository GetLocationRepository(EggProductionDbContext context)
         {
-            return new LocationRepository(new EggProductionDbContext());
+            return new LocationRepository(context);
         }
     }
 
