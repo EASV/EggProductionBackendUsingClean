@@ -1,10 +1,14 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
+using InnoTech.Core.Entity;
 using InnoTech.Core.InfratructurePorts.Repositories;
-using InnoTech.Infrastructure.Adapters.SQLData.Repositories;
 using InnoTech.Test.Helpers.Entities;
 using InnoTech.Test.Helpers.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Moq;
+using Moq.EntityFrameworkCore;
 using Xunit;
 
 namespace InnoTech.Infrastructure.Adapters.SQLData.Test.Repositories
@@ -50,6 +54,18 @@ namespace InnoTech.Infrastructure.Adapters.SQLData.Test.Repositories
             repo.Add(location);
             contextMock.Verify(c => c.Add(location), Times.Once);
         }
-        
+
+        [Fact]
+        public void Add_WithValidLocation_AddsItToDbSetChangeTrackerList()
+        {
+            var location = _entityHelper.ValidLocation();
+            var changeTrackerListLocations = new List<Location>();
+            var contextMock = new Mock<EggProductionDbContext>();
+            contextMock.Setup(c => c.Add(location))
+                .Callback<Location>(l => changeTrackerListLocations.Add(l));
+            var repo = _repoHelper.GetLocationRepository(contextMock.Object);
+            repo.Add(location);
+            Assert.Equal(location, changeTrackerListLocations.First());
+        }
     }
 }

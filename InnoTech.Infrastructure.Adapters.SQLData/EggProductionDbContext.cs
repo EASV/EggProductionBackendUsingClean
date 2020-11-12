@@ -5,7 +5,7 @@ namespace InnoTech.Infrastructure.Adapters.SQLData
 {
     public class EggProductionDbContext: DbContext
     {
-       public DbSet<Location> Locations { get; set; }
+       public virtual DbSet<Location> Locations { get; set; }
     }
     
 }
